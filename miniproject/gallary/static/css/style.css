@@ -1,0 +1,480 @@
+/* https://coolors.co/black-000000  blue:14213d  yelloe: fca311 grey:e5e5e5 white:ffffff */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+:root {
+    --blue: #14213d;
+    --white: #ffffff;
+    --black:#000000;
+    --yellow:#fca311;
+    --grey:#e5e5e5;
+    --grey2:#d5d6d5;
+    /* d6d6d6; */
+    --grey3:#f1faee;
+    --header:'Lobster', cursive;
+    --subheader: 'Roboto', sans-seri;
+  }
+
+body{
+margin:0;
+padding:0;
+background-color: var(--white);
+}
+ *{
+    box-sizing: border-box;
+}
+
+div{
+    margin:0;
+}
+.main_container{
+    width:100vw;
+    min-height:100vh;
+    margin:0;
+    padding:10px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+} 
+
+/* signup page css */
+#sinup_page{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    width:100vw;
+    height:100vh;
+}
+#signup_form{
+    margin-top: 5vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#signup_page h1{
+    font-family: var(--header);
+}
+#signup_page h3{
+    font-family: var(--header);
+}
+#signup_page form{
+    max-width:70%;  
+    display:flex;
+    flex-direction: column;
+
+}
+#signup_form form p{
+    /* display: inline-block; */
+    margin-top:5px;
+}
+#signup_form form p label{
+display: none;
+}
+#signup_form form p input{
+    max-height: 5vh;
+    font-size: 1rem;
+    color:var(--blue);
+    border-radius: 100px;
+    padding-left: 20px;
+    background-color: var(--grey);
+}
+input::placeholder { 
+    text-align: center;
+    color:var(--black);
+    opacity: 0.8; /* Firefox */
+  }
+#submit_btn{
+    margin-top: 2vh;
+    background-color: var(--yellow);
+    width: 300px;
+    margin: auto;
+    border-radius: 100px;
+}
+#login_btn{
+    margin-top: 2vh;
+    border-radius: 100px;
+    background-color: var(--yellow);
+    width: 300px;
+    margin: auto;
+}
+
+#signup_img{
+    margin-top: 10vh;
+    padding-left: 10vw;
+}
+#signup_img img{
+    max-height: 80vh;
+}
+#signup_title{
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: var(--header);
+    /* position: absolute; */
+    /* top: 20vh;
+    left: 61vw; */
+}
+
+#login_form{
+    width:100%;
+    margin-top: 10vh;
+}
+#temp_img{
+    display: none;
+}
+#signup_title_mobile{
+    display: none;
+}
+
+.upload_fields{
+    color:white;
+    font-weight: 500;
+}
+/* !index file */
+
+
+
+
+/* navbar */
+nav{
+    margin-top:-15px;
+    height: 30px;
+        line-height: 30px;
+        
+}
+.no-shadows{
+    box-shadow: none;
+}
+#navbar{
+    
+}
+
+.nav-wrapper{
+    background-color: var(--black);
+    color:var(--white);
+    font-family: var(--subheader);
+    /* background-color: transparent !important; */
+    
+    height: 20px;
+    line-height: 40px;
+    
+}
+#logo{
+    padding-top: 10px;
+    padding-left: 20px;
+    color:var(--white);
+}
+#logo:hover{
+    opacity: 0.5;
+}
+#ham{
+    color: var(--white);
+    font-weight: 800;
+    font-size: 2.8rem;
+}
+.links{
+    color:var(--white);
+    font-weight: 500;
+    
+}
+/* navbar end */
+
+
+#index_body{
+background-color: var(--black);
+color:var(--white);
+
+}
+
+.carousel{
+    margin-top: 5vh;
+    min-height:80vh;
+}
+.carousel-item img{
+    max-height: 80vh;
+    max-width: 80vw;
+}
+#carousel_btn{
+    background-color: #fca311;
+}
+#carousel_btn:hover{
+background-color: #14213d;
+}
+
+
+/* *category and search */
+#category{
+    display:flex;
+    direction:row;
+    justify-content: space-around;
+    margin-top: 5vh;
+    max-width: 80vw;
+    margin-left: 10vw;
+
+}
+#tags{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width:50vw;
+    padding:20px;
+}
+#tags btn{
+    margin:5px;
+    min-width: 10vw;
+
+    background-color: #fca311;
+    opacity: 0.8;
+}
+#tags btn:hover{
+opacity: 1;
+box-shadow:0px 3px 3px #353433;
+}
+
+#naturegallary,#animalsgallary,#foodgallary,#carsgallary,#bikesgallary,
+#marriagegallary,#fashiongallary,#eventsgallary{
+    display: none;
+    margin-top: 5vh;
+    max-width:80vw;
+    margin-left: 10vw;
+    margin-right:10vw;
+    flex-direction: row;
+    background-color: transparent;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#naturegallary .card,#animalsgallary .card,#foodgallary .card,#carsgallary .card,#bikesgallary .card,
+#marriagegallary .card,#fashiongallary .card,#eventsgallary .card{
+    width:25vw;
+}
+#naturegallary .card .card-img img,#animalsgallary .card .card-img img,#foodgallary .card .card-img img,#carsgallary .card .card-img img,#bikesgallary .card .card-img img
+,#marriagegallary .card .card-img img,#fashiongallary.card .card-img img,#eventsgallary .card .card-img img{
+
+    max-width: 25vw;
+}
+
+#search{
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    margin-top: 10vh;
+    padding-left: 15vw;
+    
+
+}
+#searchbox{
+   
+    width: 60vw;
+    border: solid 5px yellow;
+}
+#search:focus{
+    background-color: red;
+}
+#search nav{
+    color:white;
+    max-width:40vw;
+    max-height: 10vh;
+    background-color: #1d1d1d;
+}
+#searchresult{
+    /* display: none; */
+}
+/* *end of category and search */
+
+/* *gallary */
+#gallary{
+    margin-top: 5vh;
+    max-width:80vw;
+    margin-left: 10vw;
+    margin-right:10vw;
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+#gallary .card{
+    width:25vw;
+    /* height:30vh; */
+    /* gap:15px;
+     */
+     /* margin: 25px; */
+}
+#gallary .card .card-img img{
+
+    max-width: 25vw;
+    /* max-height: 30vh; */
+}
+#contact_div a:hover{
+    cursor: pointer;
+    color:white;
+    opacity: 0.5;
+    box-shadow: inset 4px;
+}
+/* *gallary end */
+
+#emaildiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+#emailformcontainer{
+    /* padding-left: 10vw; */
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.emailform{
+    color:#d5d6d5;
+    min-width: 30vw;
+    
+}
+#sendmail{
+    font-size: 1rem;
+    font-weight: 700;
+}
+#sendmail:hover{
+cursor: pointer;
+opacity: 0.7;
+}
+#emailimg img{
+    width:30vw;
+    height: 60vh;
+}
+
+
+#uploaddiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#img{
+    min-width: 40vw;
+}
+#uploadimg img{
+    width:30vw;
+    height:60vh;
+}
+
+#userlabel{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+#data{
+    padding-left: 20px;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+#useruploads{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+/* !index end */
+/* mobile  view */
+@media only screen and (max-width: 600px) {
+    /* body{
+        overflow-x: hidden;
+    } */
+    #signup_page form{
+        max-width:100%;  
+    
+    }
+    #login_form{
+        margin-top: 0vh;
+    }
+    #temp_img{
+        display: block;
+        max-width: 80vw;
+        max-height: 40vh;
+    }
+    #signup_title_mobile{
+        display: block;
+        font-size: 2rem;
+        font-weight: 300;
+        font-family: var(--header);
+        /* position: absolute;
+        top: 20vh;
+        left: 61vw; */
+    }
+
+
+    /* !index */
+   
+  /* ?carousel */
+  .carousel{
+      max-height: 50vh;
+  }
+  .carousel-item{
+      /* margin-top: 15vh; */
+      max-height: 50vh;
+  }
+  
+  .carousel .indicators .indicator-item{
+    margin-top: -55vh;
+    background-color: red;
+  }
+
+
+  /* ?category */
+  #category{
+      /* display: block; */
+      /* justify-content: flex-start;
+      flex-direction: row;
+      flex-wrap: nowrap; */
+   
+  }
+  #tags{
+      width:100%;
+      font-size: 0.8rem;
+  }
+   #tags .btn{
+       font-size: 0.6rem;
+   }
+
+   /* #naturegallary,#animalsgallary,#foodgallary,#carsgallary,#bikesgallary,
+#marriagegallary,#fashiongallary,#eventsgallary{
+    flex-direction: column;
+    max-width:80vw;
+    margin-left: 10vw;
+    margin-right:10vw;
+
+} */
+
+#naturegallary .card,#animalsgallary .card,#foodgallary .card,#carsgallary .card,#bikesgallary .card,
+#marriagegallary .card,#fashiongallary .card,#eventsgallary .card{
+    width:80vw;
+}
+
+#gallary .card{
+    width: 80vw;
+}
+
+#search nav{
+    max-width: 55vw;
+}
+
+#emaiformcontainer{
+    height: 80vh;
+max-width: 90vw;
+margin-left: 5vw;
+padding:10px;
+background-color: #fca311;
+}
+.emailform{
+    min-width: 80vw;
+}
+#emailimg{
+    display: none;
+}
+#uploaddiv{
+    padding:10px;
+}
+#uploadimg{
+    display: none;
+}
+  }

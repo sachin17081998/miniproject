@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallary</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  
+    <!-- <a href="index">index</a> -->
+
+    <div class="row" id="signup_page">
+        <div class="col l6 s12" id="signup_form">
+            {% if registered %}
+            <h1 style="color:rgb(204, 203, 203);">Thanks For Registring</h1>
+         
+            {% else %}
+            <h3>Create Account</h3>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }}
+                <input class=" btn" type="submit" value="Register" id="submit_btn">
+            </form>
+            {% endif %}
+            <p style="color:#14213d"> click to login...</p>
+            <a href="user_login"  id="login_btn" class="btn">Login</a>
+    
+        </div>
+        <div class="col l6 s0 hide-on-med-and-down " id="signup_img" >
+            <img src="{% static 'assets/reg1.jpg' %}" alt="" srcset="">
+                <!-- <p id="signup_title"> Explore</p> -->
+        </div>
+       
+    </div>
+
+   
+    
+    <script src="{% static 'js/jquery-3.5.1.js' %}"></script>
+    <script src="{% static 'js/materialize.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallary</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<!-- <body class="white">
+    <div id="navbar" class="navbar-fixed  section scrollspy">
+        <nav class="no-shadows">
+            <div class="nav-wrapper  ">
+                <a  href="{% url 'return_home' pk=custid %}" id="logo" class="brand-logo ">
+                    Home</a>
+               
+            </div>
+
+        </nav>
+
+    </div>
+  
+    <script>var cost=0;var temp=0;</script>
+    <div class="container" style="padding:20px;">
+    <div class="cart_container">
+    {% for item in orders %}
+        
+        <div class="card horizontal " id="cart_card">
+            <div class="card-image">
+              <img id="cart-img" src="{{item.image}}">
+            </div>
+            <div class="card-stacked">
+              <div class="card-content">
+                <p>Name: {{item.productName|safe}}</p>
+                <p>Price: {{item.cost}}</p>
+               
+              </div>
+              <div class="card-action">
+                <a href="{% url 'delete_product' pk=item.id cust=item.customerId %}">Remove</a>
+              </div>
+            </div>
+          </div>
+          
+          <script>cost=cost+parseInt('{{item.cost}}')</script>
+          {% empty %}
+          <h2>Cart is Empty</h2>
+    {%endfor %}      
+
+    
+</div>
+  
+</div>
+  
+ 
+  
+   
+    <br>
+  
+      <div id="total_cost">
+      <p id="totalcost">Total Cart value: </p>
+        <a  href="{% url 'place_order' cust=customer %}"
+         onclick="alert('Your Order is Placed and will  be delivered to the registered address')" class="btn">Place Order</a>
+    </div>
+    <script>
+        document.getElementById("totalcost").textContent += cost;
+    </script> -->
+  
+    <script src="{% static 'js/jquery-3.5.1.js' %}"></script>
+    <script src="{% static 'js/materialize.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

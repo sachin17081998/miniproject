@@ -1,0 +1,102 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallary</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body id="index_body" >
+    <div id="navbar" class="navbar-fixed  section scrollspy">
+        <nav class="no-shadows">
+            <div class="nav-wrapper  ">
+                <a  href="{% url 'return_home' pk=user.pk %}" id="logo" class="brand-logo ">
+                    Home</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i id="ham"
+                        class="material-icons ">menu</i></a>
+
+                <ul class=" section  hide-on-med-and-down right " id="desk_nav">
+                    <li><a  onclick="show_section(this.id)" id="" class="links " href=""> Profile</a></li>
+                    <li><a  onclick="show_section(this.id)" id="" class="links  "  href="{% url 'image_view' %}">Upload </a></li>
+               
+                   <li><a   class="links " href="{% url 'user_logout' %}">Logout</a> </li>
+                </ul>
+            </div>
+
+        </nav>
+
+    </div>
+    <ul class="sidenav" id='mobile-demo'>
+        <li><a onclick="show_section(this.id)" id="" class="links " href="">Profile</a></li>
+        <li><a  onclick="show_section(this.id)" id="" class="links  "  href="{% url 'image_view' %}">Upload </a></li>
+      
+        <li><a   class="links " href="{% url 'user_logout' %}">Logout</a> </li>
+    </ul>
+    <br><br><br>
+    <div id="uploaddiv">   
+    <div id="img">
+    
+        <form style="color:white;" method = "post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <center>
+            <button class="btn yellow black-text" id="sendmail" type="submit">Upload</button>
+        </center>
+        </form>
+    
+    </div>
+
+    <div id="uploadimg">
+        <img src="{% static 'assets/upload.png' %}"" alt="">
+    </div>
+</div>
+
+
+<br><br>
+<br><br>
+
+<footer class="page-footer yellow black-text">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="black-text">Aboust Us</h5>
+          <p class="black-text text-lighten-4">We provide an online platfrom where you can share your photographs so that
+            others can admire your work.
+          </p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="black-text">Find us at</h5>
+          <ul>
+            <li><a class="black-text text-lighten-3" href="#!">Instagram</a></li>
+            <li><a class="black-text text-lighten-3" href="#!">Twitter</a></li>
+            <li><a class="black-text text-lighten-3" href="#!">Facebook</a></li>
+            <li><a class="black-text text-lighten-3" href="#!">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright ">
+      <div class="container center black-text">
+      © 2021 Mini project By Sachin Kumar SIngh
+     
+      </div>
+    </div>
+  </footer>
+   
+    <script src="{% static 'js/jquery-3.5.1.js' %}"></script>
+    <script src="{% static 'js/materialize.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
+

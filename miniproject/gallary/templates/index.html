@@ -1,0 +1,571 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallary</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body id="index_body">
+    <div id="navbar" class="navbar-fixed  section scrollspy">
+        <nav class="no-shadows">
+            <div class="nav-wrapper  ">
+                <a  href="{% url 'return_home' pk=user.pk %}" id="logo" class="brand-logo ">
+                    Home</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i id="ham"
+                        class="material-icons ">menu</i></a>
+
+                <ul class=" section  hide-on-med-and-down right " id="desk_nav">
+                    <li><a  onclick="show_section(this.id)" id="" class="links " href="{% url 'user_profile' pk=user.pk %}"> Profile</a></li>
+                    <li><a  onclick="show_section(this.id)" id="" class="links  "  href="{% url 'image_view' %}">Upload </a></li>
+                    <li><a  onclick="show_section(this.id)" id="" class="links" href="#search">Search</a></li>
+                   <li><a   class="links " href="{% url 'user_logout' %}">Logout</a> </li>
+                </ul>
+            </div>
+
+        </nav>
+
+    </div>
+    <ul class="sidenav" id='mobile-demo'>
+        <li><a onclick="show_section(this.id)" id="" class="links " href="{% url 'user_profile' pk=user.pk %}"> Profile</a></li>
+        <li><a  onclick="show_section(this.id)" id="" class="links  "  href="{% url 'image_view' %}">Upload </a></li>
+        <li><a  onclick="show_section(this.id)" id="" class="links" href="#search">Search</a></li>
+        <li><a   class="links " href="{% url 'user_logout' %}">Logout</a> </li>
+    </ul>
+<!-- ! landing carousel -->
+<div class="carousel carousel-slider center">
+    
+    <div class="carousel-item  white-text" href="#one!">
+   
+      <img src="{% static 'assets/car1.jpg' %}" alt="">
+    </div>
+    <div class="carousel-item  white-text" href="#two!">
+
+      
+      <img src="{% static 'assets/car2.jpg' %}" alt="">
+    </div>
+    <div class="carousel-item  white-text" href="#three!">
+
+      <img src="{% static 'assets/car3.jpg' %}" alt="">
+    </div>
+    <div class="carousel-item  white-text" href="#four!">
+    
+      
+      <img src="{% static 'assets/car4.jpg' %}" alt="">
+    </div>
+    
+    <div class="carousel-item  white-text" href="#four!">
+    
+        
+        <img src="{% static 'assets/car5.jpg' %}" alt="">
+      </div>
+  </div>   
+<!-- !carousel end -->
+
+<!-- !categoru & search -->
+<div id="category">
+  <div id="tags">
+    <btn onclick="showgal(this.id)" id="nature" class="btn">Nature</btn>
+    <btn  onclick="showgal(this.id)" id="marriage" class="btn">Marriage</btn>
+    <btn  onclick="showgal(this.id)" id="animals" class="btn">Animals</btn>
+    <btn onclick="showgal(this.id)" id="fashion" class="btn">Fashion</btn>
+    <btn  onclick="showgal(this.id)" id="food" class="btn">Food/Drinks</btn>
+    <btn  onclick="showgal(this.id)" id="bikes" class="btn">Bikes</btn>
+    <btn  onclick="showgal(this.id)" id="cars" class="btn">Cars</btn>
+    <btn  onclick="showgal(this.id)" id="events" class="btn">Events</btn>
+  </div>
+ 
+</div>
+</div> 
+<div id="naturegallary">
+  {% if not nature %}
+  <h2>No Data</h2>
+  {% else %}
+  {% for i in nature %}
+  <!-- <a class=" modal-trigger" href="#modal1"> -->
+  <div class="card" style="background-color: #1b1919;">
+      <div class="card-image">
+        <img class="materialboxed" src="{{ i.img.url }}" >
+        <span class="card-title">{{i.imgname}}</span>
+
+      </div>
+      <div class="card-content">
+      {% for j in alluser %}
+      {% ifequal j.username  i.username %}
+      <div style="display:flex;flex-direction:row;justify-content: space-around;">
+        <div>
+        <h6><b>By:</b>{{j.username}}</h6>
+      <p>Email: {{j.email}}
+        <br>
+        Contact: {{j.user_data.contact}}<br>
+        Address: {{j.user_data.address}}
+      </p>
+    </div>
+    <div id="contact_div" style="max-width:40%;font-size: 1rem;display:flex;flex-direction:column;align-items: center;justify-content: space-around;">
+      <a style="background-color: rgb(255, 219, 15);font-size: 0.7rem;color:#1b1919;font-weight: bolder;"
+       href="{% url 'contactView' pk=j.pk %}" class="btn" >contact</a>
+      <a style="background-color: rgb(255, 219, 15);font-size: 0.7rem;color:#1b1919;font-weight: bolder;"
+       href="{{ i.img.url }}" class="btn" download>Download</a>
+    </div>
+    </div>
+      {% endifequal %}
+
+     {% endfor %} 
+     
+    </div>
+
+  </div>
+
+{% endfor %}  
+{% endif %}
+  
+</div>
+
+<div id="animalsgallary">
+  {% if not animals %}
+  <h2>No Data for animals</h2>
+  {% else %}
+  {% for i in animals %}
+  <!-- <a class=" modal-trigger" href="#modal1"> -->
+  <div class="card" style="background-color: #1b1919;">
+      <div class="card-image">
+        <img class="materialboxed" src="{{ i.img.url }}" >
+        <span class="card-title">{{i.imgname}}</span>
+
+      </div>
+      <div class="card-content">
+      {% for j in alluser %}
+      {% ifequal j.username  i.username %}
+      <div style="display:flex;flex-direction:row;justify-content: space-around;">
+        <div>
+        <h6><b>By:</b>{{j.username}}</h6>
+      <p>Email: {{j.email}}
+        <br>
+        Contact: {{j.user_data.contact}}<br>
+        Address: {{j.user_data.address}}
+      </p>
+    </div>
+    <div id="contact_div" style="max-width:40%;font-size: 1rem;display:flex;flex-direction:column;align-items: center;justify-content: space-around;">
+      <a style="background-color: rgb(255, 219, 15);font-size: 0.7rem;color:#1b1919;font-weight: bolder;"
+       href="{% url 'contactView' pk=j.pk %}" class="btn" >contact</a>
+      <a style="background-color: rgb(255, 219, 15);font-size: 0.7rem;color:#1b1919;font-weight: bolder;"
+       href="{{ i.img.url }}" class="btn" download>Download</a>
+    </div>
+    </div>
+      {% endifequal %}
+
+     {% endfor %} 
+     
+    </div>
+
+  </div>
+
+{% endfor %}  
+{% endif %}
+  
+</div>
+
+<div id="marriagegallary">
+  {% if not marriage %}
+  <h2>No Data</h2>
+  {% else %}
+  {% for i in marriage %}
+  <!-- <a class=" modal-trigger" href="#modal1"> -->
+  <div class="card" style="background-color: #1b1919;">
+      <div class="card-image">
+        <img class="materialboxed" src="{{ i.img.url }}" >
+        <span class="card-title">{{i.imgname}}</span>
+
+      </div>
+      <div class="card-content">
+      {% for j in alluser %}
+      {% ifequal j.username  i.username %}
+      <div style="display:flex;flex-direction:row;justify-content: space-around;">
+        <div>
+        <h6><b>By:</b>{{j.username}}</h6>
+      <p>Email: {{j.email}}
+        <br>
+        Contact: {{j.user_data.contact}}<br>
+        Address: {{j.user_data.address}}
+      </p>
+    </div>
+    <div id="contact_div" style="max-width:40%;font-size: 1rem;display:flex;flex-direction:column;align-items: center;justify-content: space-around;">
+      <a style="background-color: rgb(255, 219, 15);font-size: 0.7rem;color:#1b1919;font-weight: bolder;"
+       href="{% url 'contactView' pk=j.pk %}" class="btn" >contact</a>
+      <a style="background-color: rgb(255, 219, 15);font-size: 0.7rem;color:#1b1919;font-weight: bolder;"
+       href="{{ i.img.url }}" class="btn" download>Download</a>
+    </div>
+    </div>
+      {% endifequal %}
+
+     {% endfor %} 
+     
+    </div>
+
+  </div>
+
+{% endfor %}  
+{% endif %}
+</div>
+
+<div id="fashiongallary">
+  {% if not fashion %}
+  <h2>No Data</h2>
+  {% else %}
+  {% for i in fashion %}
+  <!-- <a class=" modal-trigger" href="#modal1"> -->
+  <div class="card" style="background-color: #1b1919;">
+      <div class="card-image">
+        <img class="materialboxed" src="{{ i.img.url }}" >
+        <span class="card-title">{{i.imgname}}</span>
+
+      </div>
+      <div class="card-content">
+      {% for j in alluser %}
+      {% ifequal j.username  i.username %}
+      <div style="display:flex;flex-direction:row;justify-content: space-around;">
+        <div>
+        <h6><b>By:</b>{{j.username}}</h6>
+      <p>Email: {{j.email}}
+        <br>
+        Contact: {{j.user_data.contact}}<br>
+        Address: {{j.user_data.address}}
+      </p>
+    </div>
+    <div id="contact_div" style="max-width:40%;font-size: 1rem;display:flex;flex-direction:column;align-items: center;justify-content: space-around;">
+      <a style="background-color: rgb(255, 219, 15);font-size: 0.7rem;color:#1b1919;font-weight: bolder;"
+       href="{% url 'contactView' pk=j.pk %}" class="btn" >contact</a>
+      <a style="background-color: rgb(255, 219, 15);font-size: 0.7rem;color:#1b1919;font-weight: bolder;"
+       href="{{ i.img.url }}" class="btn" download>Download</a>
+    </div>
+    </div>
+      {% endifequal %}
+
+     {% endfor %} 
+     
+    </div>
+
+  </div>
+
+{% endfor %}  
+{% endif %}
+</div>
+
+<div id="foodgallary">
+  {% if not food %}
+  <h2>No Data</h2>
+  {% else %}
+  {% for i in food %}
+  <!-- <a class=" modal-trigger" href="#modal1"> -->
+  <div class="card" style="background-color: #1b1919;">
+      <div class="card-image">
+        <img class="materialboxed" src="{{ i.img.url }}" >
+        <span class="card-title">{{i.imgname}}</span>
+
+      </div>
+      <div class="card-content">
+      {% for j in alluser %}
+      {% ifequal j.username  i.username %}
+      <div style="display:flex;flex-direction:row;justify-content: space-around;">
+        <div>
+        <h6><b>By:</b>{{j.username}}</h6>
+      <p>Email: {{j.email}}
+        <br>
+        Contact: {{j.user_data.contact}}<br>
+        Address: {{j.user_data.address}}
+      </p>
+    </div>
+    <div id="contact_div" style="max-width:40%;font-size: 1rem;display:flex;flex-direction:column;align-items: center;justify-content: space-around;">
+      <a style="background-color: rgb(255, 219, 15);font-size: 0.7rem;color:#1b1919;font-weight: bolder;"
+       href="{% url 'contactView' pk=j.pk %}" class="btn" >contact</a>
+      <a style="background-color: rgb(255, 219, 15);font-size: 0.7rem;color:#1b1919;font-weight: bolder;"
+       href="{{ i.img.url }}" class="btn" download>Download</a>
+    </div>
+    </div>
+      {% endifequal %}
+
+     {% endfor %} 
+     
+    </div>
+
+  </div>
+
+{% endfor %}  
+{% endif %}
+</div>
+
+<div id="bikesgallary">
+  {% if not bikes %}
+  <h2>No Data</h2>
+  {% else %}
+  {% for i in bikes %}
+  <!-- <a class=" modal-trigger" href="#modal1"> -->
+  <div class="card" style="background-color: #1b1919;">
+      <div class="card-image">
+        <img class="materialboxed" src="{{ i.img.url }}" >
+        <span class="card-title">{{i.imgname}}</span>
+
+      </div>
+      <div class="card-content">
+      {% for j in alluser %}
+      {% ifequal j.username  i.username %}
+      <div style="display:flex;flex-direction:row;justify-content: space-around;">
+        <div>
+        <h6><b>By:</b>{{j.username}}</h6>
+      <p>Email: {{j.email}}
+        <br>
+        Contact: {{j.user_data.contact}}<br>
+        Address: {{j.user_data.address}}
+      </p>
+    </div>
+    <div id="contact_div" style="max-width:40%;font-size: 1rem;display:flex;flex-direction:column;align-items: center;justify-content: space-around;">
+      <a style="background-color: rgb(255, 219, 15);font-size: 0.7rem;color:#1b1919;font-weight: bolder;"
+       href="{% url 'contactView' pk=j.pk %}" class="btn" >contact</a>
+      <a style="background-color: rgb(255, 219, 15);font-size: 0.7rem;color:#1b1919;font-weight: bolder;"
+       href="{{ i.img.url }}" class="btn" download>Download</a>
+    </div>
+    </div>
+      {% endifequal %}
+
+     {% endfor %} 
+     
+    </div>
+
+  </div>
+
+{% endfor %}  
+{% endif %}
+</div>
+
+<div id="carsgallary">
+  {% if not cars %}
+  <h2>No Data</h2>
+  {% else %}
+  {% for i in cars %}
+  <!-- <a class=" modal-trigger" href="#modal1"> -->
+  <div class="card" style="background-color: #1b1919;">
+      <div class="card-image">
+        <img class="materialboxed" src="{{ i.img.url }}" >
+        <span class="card-title">{{i.imgname}}</span>
+
+      </div>
+      <div class="card-content">
+      {% for j in alluser %}
+      {% ifequal j.username  i.username %}
+      <div style="display:flex;flex-direction:row;justify-content: space-around;">
+        <div>
+        <h6><b>By:</b>{{j.username}}</h6>
+      <p>Email: {{j.email}}
+        <br>
+        Contact: {{j.user_data.contact}}<br>
+        Address: {{j.user_data.address}}
+      </p>
+    </div>
+    <div id="contact_div" style="max-width:40%;font-size: 1rem;display:flex;flex-direction:column;align-items: center;justify-content: space-around;">
+      <a style="background-color: rgb(255, 219, 15);font-size: 0.7rem;color:#1b1919;font-weight: bolder;"
+       href="{% url 'contactView' pk=j.pk %}" class="btn" >contact</a>
+      <a style="background-color: rgb(255, 219, 15);font-size: 0.7rem;color:#1b1919;font-weight: bolder;"
+       href="{{ i.img.url }}" class="btn" download>Download</a>
+    </div>
+    </div>
+      {% endifequal %}
+
+     {% endfor %} 
+     
+    </div>
+
+  </div>
+
+{% endfor %}  
+{% endif %}
+</div>
+ 
+<div id="eventsgallary">
+  {% if not events %}
+  <h2>No Data</h2>
+  {% else %}
+  {% for i in events %}
+  <!-- <a class=" modal-trigger" href="#modal1"> -->
+  <div class="card" style="background-color: #1b1919;">
+      <div class="card-image">
+        <img class="materialboxed" src="{{ i.img.url }}" >
+        <span class="card-title">{{i.imgname}}</span>
+
+      </div>
+      <div class="card-content">
+      {% for j in alluser %}
+      {% ifequal j.username  i.username %}
+      <div style="display:flex;flex-direction:row;justify-content: space-around;">
+        <div>
+        <h6><b>By:</b>{{j.username}}</h6>
+      <p>Email: {{j.email}}
+        <br>
+        Contact: {{j.user_data.contact}}<br>
+        Address: {{j.user_data.address}}
+      </p>
+    </div>
+    <div id="contact_div" style="max-width:40%;font-size: 1rem;display:flex;flex-direction:column;align-items: center;justify-content: space-around;">
+      <a style="background-color: rgb(255, 219, 15);font-size: 0.7rem;color:#1b1919;font-weight: bolder;"
+       href="{% url 'contactView'  pk=j.pk %}" class="btn" >contact</a>
+      <a style="background-color: rgb(255, 219, 15);font-size: 0.7rem;color:#1b1919;font-weight: bolder;"
+       href="{{ i.img.url }}" class="btn" download>Download</a>
+    </div>
+    </div>
+      {% endifequal %}
+
+     {% endfor %} 
+     
+    </div>
+
+  </div>
+
+{% endfor %}  
+{% endif %}
+</div>
+<!-- !categoy and search end -->
+
+
+<!-- !gallary -->
+<h4 style="text-align: center;">Gallary</h4>
+<div id="gallary">
+
+    {% for i in images %}
+    <!-- <a class=" modal-trigger" href="#modal1"> -->
+    <div class="card" style="background-color: #1b1919;">
+        <div class="card-image">
+          <img class="materialboxed" src="{{ i.img.url }}" >
+          <span class="card-title">{{i.imgname}}</span>
+
+        </div>
+        <div class="card-content">
+        {% for j in alluser %}
+        {% ifequal j.username  i.username %}
+        <div style="display:flex;flex-direction:row;justify-content: space-around;">
+          <div>
+          <h6><b>By:</b>{{j.username}}</h6>
+        <p>Email: {{j.email}}
+          <br>
+          Contact: {{j.user_data.contact}}<br>
+          Address: {{j.user_data.address}}
+        </p>
+      </div>
+      <div id="contact_div" style="max-width:40%;font-size: 1rem;display:flex;flex-direction:column;align-items: center;justify-content: space-around;">
+        <a style="background-color: rgb(255, 219, 15);font-size: 0.7rem;color:#1b1919;font-weight: bolder;"
+         href="{% url 'contactView' pk=j.pk %}" class="btn" >contact</a>
+        <a style="background-color: rgb(255, 219, 15);font-size: 0.7rem;color:#1b1919;font-weight: bolder;"
+         href="{{ i.img.url }}" class="btn" download>Download</a>
+      </div>
+      </div>
+        {% endifequal %}
+
+       {% endfor %} 
+      </div>
+
+    </div>
+
+{% endfor %}  
+</div>
+
+
+
+<div id="search">
+  <nav>
+    <div class="nav-wrapper z-depth-4" >
+      <form name="myform" method="GET" action="{% url 'search' %}" onsubmit="showresult()">
+        <div class=" input-field" >
+          <input style="background-color: #1b1919;color:white;" id="searchbox" name="search" type="search" required>
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i  class="material-icons">close</i>
+        </div>
+      </form >
+    </div>
+  </nav>
+</div>
+<div id="searchresult">
+<div id="gallary">
+  {% if not img %}
+  {{ searchtext}}
+
+  {% else %}
+ 
+  {% for i in img %}
+  <!-- <a class=" modal-trigger" href="#modal1"> -->
+  <div class="card" style="background-color: #1b1919;">
+      <div class="card-image">
+        <img class="materialboxed" src="{{ i.img.url }}" >
+        <span class="card-title">{{i.imgname}}</span>
+
+      </div>
+      <div class="card-content">
+      {% for j in alluser %}
+      {% ifequal j.username  i.username %}
+      <div style="display:flex;flex-direction:row;justify-content: space-around;">
+        <div>
+        <h6><b>By:</b>{{j.username}}</h6>
+      <p>Email: {{j.email}}
+        <br>
+        Contact: {{j.user_data.contact}}<br>
+        Address: {{j.user_data.address}}
+      </p>
+    </div>
+    <div id="contact_div" style="max-width:40%;font-size: 1rem;display:flex;flex-direction:column;align-items: center;justify-content: space-around;">
+      <a style="background-color: rgb(255, 219, 15);font-size: 0.7rem;color:#1b1919;font-weight: bolder;"
+       href="{% url 'contactView' pk=j.pk %}" class="btn" >contact</a>
+      <a style="background-color: rgb(255, 219, 15);font-size: 0.7rem;color:#1b1919;font-weight: bolder;"
+       href="{{ i.img.url }}" class="btn" download>Download</a>
+    </div>
+    </div>
+      {% endifequal %}
+
+     {% endfor %} 
+    </div>
+
+  </div>
+
+{% endfor %}  
+{% endif %}
+</div>
+
+<br><br>
+
+<footer class="page-footer yellow black-text">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="black-text">Aboust Us</h5>
+        <p class="black-text text-lighten-4">We provide an online platfrom where you can share your photographs so that
+          others can admire your work.
+        </p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="black-text">Find us at</h5>
+        <ul>
+          <li><a class="black-text text-lighten-3" href="#!">Instagram</a></li>
+          <li><a class="black-text text-lighten-3" href="#!">Twitter</a></li>
+          <li><a class="black-text text-lighten-3" href="#!">Facebook</a></li>
+          <li><a class="black-text text-lighten-3" href="#!">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright ">
+    <div class="container center black-text">
+    © 2021 Mini project By Sachin Kumar SIngh
+   
+    </div>
+  </div>
+</footer>
+    <script src="{% static 'js/jquery-3.5.1.js' %}"></script>
+    <script src="{% static 'js/materialize.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
+

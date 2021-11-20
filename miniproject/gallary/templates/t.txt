@@ -1,0 +1,2 @@
+  <!-- <li><a  onclick="show_section(this.id)"  id="cart_link"  class="links " href="{% url 'show_cart2' cust=customer.name %}">Cart</a> </li> -->
+      
